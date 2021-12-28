@@ -34,7 +34,7 @@ var addPerson = function(){
     dummy.select();
     // Copy its contents
     var res = document.execCommand('copy');
-    console.log(copy,res);
+    console.log(res);
     debugger
     if(res){
       console.log("bien");

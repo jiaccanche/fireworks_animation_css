@@ -76,9 +76,9 @@
 }
 
 .fireworkt2 .explosion::before {
-	animation: explosion 2.5s ease-in-out infinite;
+	animation: explosion 3s ease-in-out infinite;
 }
 
 .fireworkt3 .explosion::before {
-	animation: explosion 4s ease-in-out infinite;
+	animation: explosion 5s ease-in-out infinite;
 }

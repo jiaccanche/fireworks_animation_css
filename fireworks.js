@@ -7,7 +7,7 @@
 let time = 1;
  function exeGenerateFireworks() {
   console.log("repeated action");
-   for (var i = 0; i < 30; i++) {
+   for (var i = 0; i < 40; i++) {
      var firework = document.createElement("div");
      firework.className = `fireworkt${time} firework`;
      firework.setAttribute("id", `firework${i}`);
