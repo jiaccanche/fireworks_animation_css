@@ -14,7 +14,7 @@ var addPerson = function(){
     copyText = "User cancelled the prompt.";
     alert("Algo salio mal");
   } else {
-    copyText = "https://jiaccanche.github.io/fireworks_new_year/index.html?name=" + encodeURIComponent(person);
+    copyText = "https://jiaccanche.github.io/fireworks_animation_css/index.html?name=" + encodeURIComponent(person);
     
     var dummy = document.createElement("textarea");
 
