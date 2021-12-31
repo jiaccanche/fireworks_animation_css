@@ -1,3 +1,20 @@
+var contentToCopy;
+function copyDataToClipboard(e) {
+    e.preventDefault(); // default behaviour is to copy any selected text
+    e.clipboardData.setData("text/plain", contentToCopy);
+}
+function copy(content) {
+    contentToCopy = content;
+    document.addEventListener("copy", copyDataToClipboard);
+    try {
+        document.execCommand("copy");
+    } catch (exception) {
+        console.error("Copy to clipboard failed");
+    } finally {
+        document.removeEventListener("copy", copyDataToClipboard);
+    }
+}
+
 
 var changeName = function(){
   var name = getUrlParam('name','A todos'); 
@@ -7,7 +24,7 @@ var changeName = function(){
   
 }
 
-var addPerson = function(){
+var addPerson =  async function(){
   var person = prompt("Por favor introduce un nombre:","" );
   var copyText = "";
   if (person == null || person == "") {
@@ -15,40 +32,11 @@ var addPerson = function(){
     alert("Algo salio mal");
   } else {
     copyText = "https://jiaccanche.github.io/fireworks_animation_css/index.html?name=" + encodeURIComponent(person);
-    
-    var dummy = document.createElement("textarea");
 
-    // Add it to the document
-    document.body.appendChild(dummy);
-
-    // Set its ID
-    dummy.setAttribute("id", "dummy_id");
-
-    // Output the array into it
-    document.getElementById("dummy_id").value=copyText;
-    document.getElementById("dummy_id").textContent = copyText;
-
-    // Copy its contents
-    dummy.select();
-    dummy.setSelectionRange(0, 99999);
-    let res = true;
-    res = document.execCommand("copy");
-    res = document.execCommand("copy");
-    
-    
-    
-    if(res){
-      console.log("bien");
-    }else{
-      console.log("Ops! it didn't work");
-      document.execCommand("copy");
-    }
+    await copy(copyText);
     // Remove it as its not needed anymore
       
     /* Alert the copied text */
-    alert("URL copiada");
-    document.body.removeChild(dummy);
-    dummy.remove();
     
   }
 }
@@ -73,6 +61,26 @@ function getUrlParam(parameter, defaultvalue){
       urlparameter = getUrlVars()[parameter];
       }
   return urlparameter;
+}
+
+function createInput(copyText){
+  return new Promise(copyText => {
+    var dummy = document.createElement("input");
+
+    // Add it to the document
+    document.body.appendChild(dummy);
+  
+    // Set its ID
+    dummy.setAttribute("id", "dummy_id");
+  
+    // Output the array into it
+    document.getElementById("dummy_id").value=copyText;
+    document.getElementById("dummy_id").textContent = copyText;
+  
+    // Copy its contents
+    dummy.select();
+  });
+ 
 }
 //
 window.onload = loadMain 
