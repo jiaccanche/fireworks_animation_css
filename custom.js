@@ -31,11 +31,10 @@ var addPerson =  async function(){
     copyText = "User cancelled the prompt.";
     alert("Algo salio mal");
   } else {
-    copyText = "https://jiaccanche.github.io/fireworks_animation_css/index.html?name=" + encodeURIComponent(person);
-
+    copyText = "https://bit.ly/3HrH0DS?name=" + encodeURIComponent(person);
     await copy(copyText);
     // Remove it as its not needed anymore
-      
+    alert("Copiado");
     /* Alert the copied text */
     
   }
@@ -65,17 +64,10 @@ function getUrlParam(parameter, defaultvalue){
 
 function createInput(copyText){
   return new Promise(copyText => {
-    var dummy = document.createElement("input");
-
-    // Add it to the document
-    document.body.appendChild(dummy);
-  
-    // Set its ID
-    dummy.setAttribute("id", "dummy_id");
+   
   
     // Output the array into it
     document.getElementById("dummy_id").value=copyText;
-    document.getElementById("dummy_id").textContent = copyText;
   
     // Copy its contents
     dummy.select();
