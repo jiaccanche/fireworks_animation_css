@@ -1,24 +1,23 @@
 body{
   margin: 0;
   padding: 0;
-  text-align:center;
+  box-sizing: content-box;
+  overflow: hidden;
+  width: 100vw;
+  height: 100vh;
+  text-align:end;
   color: white;
   background-color: black;
 }
 
 h1{
+  position: absolute;
   color: white;
   text-align:center;
   font-size:5vw;
-  width: 100%;
-}
-
-canvas {
-left: 0px;
-top:0px;
-position:fixed; 
-vertical-align: top;
-z-index: -1;
+  width: 100vw;
+  min-width: 100vw;
+  padding-right: 0%;
 }
 
 a {
@@ -34,7 +33,7 @@ a {
 }
 
 .container {
-  max-width: 920px;
+  width: 100%;
   padding-top: 10rem;
   margin-right: 15px;
   margin-left: 15px;
@@ -47,5 +46,5 @@ a {
 #dummy_id{
   position: absolute;
   left: -1000px;
-  top:  -1000px;
+  top:  -1000px; 
 }

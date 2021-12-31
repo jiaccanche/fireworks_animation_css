@@ -1,6 +1,6 @@
 
 var changeName = function(){
-  var name = getUrlParam('name','A todos'); 
+  var name = getUrlParam('name','Sobreviviente'); 
   name = decodeURIComponent(name);
   console.log(name);
   document.getElementById("name").innerHTML = name;

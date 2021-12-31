@@ -7,14 +7,14 @@
 let time = 1;
  function exeGenerateFireworks() {
   console.log("repeated action");
-   for (var i = 0; i < 40; i++) {
+   for (var i = 0; i < 45; i++) {
      var firework = document.createElement("div");
      firework.className = `fireworkt${time} firework`;
      firework.setAttribute("id", `firework${i}`);
-     let firstValue = Math.floor(Math.random() * 100);
-     let secondValue = Math.floor(Math.random() * 100);
-     firework.style.top = `${firstValue}%`;
-     firework.style.left = `${secondValue}%`;
+     let firstValue = Math.floor(Math.random() * 90);
+     let secondValue = Math.floor(Math.random() * 90);
+     firework.style.top = `${firstValue}vh`;
+     firework.style.left = `${secondValue}vw`;
      
      var color = "#"+((1<<24)*Math.random()|0).toString(16);
      //document.documentElement.style.setProperty('--main-bg-color', color);
@@ -46,8 +46,11 @@ let time = 1;
      }
      //console.log(firework);
      document.body.appendChild(firework);
-   } 
-   
+   }
+
+    var title = document.createElement("h1");
+    title.innerHTML = '!Feliz Año Nuevo <span id="name">Sobreviviente</span>!';
+    document.body.appendChild(title);
 }
  
 exeGenerateFireworks();
