@@ -1,41 +1,84 @@
-var contentToCopy;
-function copyDataToClipboard(e) {
-    e.preventDefault(); // default behaviour is to copy any selected text
-    e.clipboardData.setData("text/plain", contentToCopy);
-}
-function copy(content) {
-    contentToCopy = content;
-    document.addEventListener("copy", copyDataToClipboard);
-    try {
-        document.execCommand("copy");
-    } catch (exception) {
-        console.error("Copy to clipboard failed");
-    } finally {
-        document.removeEventListener("copy", copyDataToClipboard);
-    }
+function copyClipboard(normal){
+  return new Promise(asd => {
+    let text = document.getElementById("dummy_id");
+    console.log(text);   
+    text.focus();
+    text.select();
+    let res = document.execCommand("copy");
+    //res = document.execCommand("copy");
+  if(res){
+    console.log("bien");
+    alert("URL copiada");
+  }else{
+    console.log("Ops! it didn't work");
+    document.execCommand("copy");
+    alert("Ops! it didn't work");
+  }
+  });
+  
+  // Remove it as its not needed anymore
+    
+  /* Alert the copied text */
+ 
 }
 
+function createInputTxt(copyText){
+  console.log("sads",copyText);
+  return new Promise(resolve => {
+    console.log(copyText);
+    var dummy = document.createElement("textarea");
+
+    // Add it to the document
+    document.body.appendChild(dummy);
+    
+    // Set its ID
+    dummy.setAttribute("id", "dummy_id");
+    console.log(dummy);
+    // Output the array into it
+    dummy.value=copyText;
+    dummy.textContent = copyText;
+    console.log(dummy);
+    let bton = document.createElement("button");
+    document.body.appendChild(bton);
+    bton.addEventListener('click', copyClipboard);
+    bton.click();
+    document.body.removeChild(bton);
+    bton.remove();
+
+
+  });
+ 
+}
+
+
+
+async function createInitials(copyText){
+  await createInputTxt(copyText);
+  //copyClipboard(copyText);
+}
 
 var changeName = function(){
-  var name = getUrlParam('name','A todos'); 
+  var name = getUrlParam('name','Sobreviviente'); 
   name = decodeURIComponent(name);
   console.log(name);
   document.getElementById("name").innerHTML = name;
   
 }
 
-var addPerson =  async function(){
+var addPerson = function(){
   var person = prompt("Por favor introduce un nombre:","" );
   var copyText = "";
   if (person == null || person == "") {
     copyText = "User cancelled the prompt.";
     alert("Algo salio mal");
   } else {
-    copyText = "https://bit.ly/3HrH0DS?name=" + encodeURIComponent(person);
-    await copy(copyText);
-    // Remove it as its not needed anymore
-    alert("Copiado");
-    /* Alert the copied text */
+    copyText = "https://bit.ly/3eGUOxH?name=" + encodeURIComponent(person.length > 15 ? person.substring(0,14) : person );
+    //console.log(copyText);
+    createInitials(copyText);
+    
+    let inpt = document.getElementById("dummy_id");
+    document.body.removeChild(inpt);
+    inpt.remove();
     
   }
 }
@@ -55,6 +98,7 @@ function getUrlVars() {
 }
 
 function getUrlParam(parameter, defaultvalue){
+  console.log(parameter,defaultvalue );
   var urlparameter = defaultvalue;
   if(window.location.href.indexOf(parameter) > -1){
       urlparameter = getUrlVars()[parameter];
@@ -62,17 +106,6 @@ function getUrlParam(parameter, defaultvalue){
   return urlparameter;
 }
 
-function createInput(copyText){
-  return new Promise(copyText => {
-   
-  
-    // Output the array into it
-    document.getElementById("dummy_id").value=copyText;
-  
-    // Copy its contents
-    dummy.select();
-  });
- 
-}
+
 //
 window.onload = loadMain 
