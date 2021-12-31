@@ -49,7 +49,7 @@ let time = 1;
    }
 
     var title = document.createElement("h1");
-    title.innerHTML = '!Feliz Año Nuevo <span id="name">Sobreviviente</span>!';
+    title.innerHTML = '!Feliz Año Nuevo!';
     document.body.appendChild(title);
 }
  
