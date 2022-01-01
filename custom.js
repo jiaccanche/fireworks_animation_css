@@ -33,7 +33,14 @@ var addPerson = function(){
     dummy.setSelectionRange(0, 99999);
     dummy.select();
     // Copy its contents
-    var res = document.execCommand('copy');
+    let res = true;
+    navigator.clipboard.writeText(copyText).then(function() {
+      /* clipboard successfully set */
+      res = true;
+    }, function() {
+      /* clipboard write failed */
+      res = false;
+    });;
     console.log(res);
     debugger
     if(res){
@@ -45,7 +52,6 @@ var addPerson = function(){
       }, function(err) {
         console.log("Ops! it didn't work",err);
       });
-      document.execCommand('copy');
     }
     // Remove it as its not needed anymore
       

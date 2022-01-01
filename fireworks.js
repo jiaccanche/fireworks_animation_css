@@ -7,12 +7,12 @@
 let time = 1;
  function exeGenerateFireworks() {
   console.log("repeated action");
-   for (var i = 0; i < 45; i++) {
+   for (var i = 0; i < 25; i++) {
      var firework = document.createElement("div");
      firework.className = `fireworkt${time} firework`;
      firework.setAttribute("id", `firework${i}`);
-     let firstValue = Math.floor(Math.random() * 90);
-     let secondValue = Math.floor(Math.random() * 90);
+     let firstValue = Math.floor(Math.random() * 100);
+     let secondValue = Math.floor(Math.random() * 100);
      firework.style.top = `${firstValue}vh`;
      firework.style.left = `${secondValue}vw`;
      
