@@ -40,7 +40,7 @@ var addPerson = function(){
     }, function() {
       /* clipboard write failed */
       res = false;
-    });;
+    });
     console.log(res);
     debugger
     if(res){
