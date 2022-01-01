@@ -32,20 +32,8 @@ var addPerson = function(){
     dummy.select();
     dummy.setSelectionRange(0, 99999);
     let res = true;
-    navigator.permissions.query({name: "clipboard-write"}).then(result => {
-      if (result.state == "granted" || result.state == "prompt") {
-        /* write to the clipboard now */
-        
-    navigator.clipboard
-      .writeText(copyText)
-      .then(() => {
-        res = true;
-      })
-      .catch(() => {
-        res = false;
-      });
-      }
-    });
+    res = document.execCommand("copy");
+    res = document.execCommand("copy");
     
     
     
