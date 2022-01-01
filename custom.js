@@ -31,18 +31,16 @@ var addPerson = function(){
     // Select it
     dummy.select();
     dummy.setSelectionRange(0, 99999);
-    dummy.select();
-    // Copy its contents
     let res = true;
-    navigator.clipboard.writeText(copyText).then(function() {
-      /* clipboard successfully set */
-      res = true;
-    }, function() {
-      /* clipboard write failed */
-      res = false;
-    });
+    navigator.clipboard
+      .writeText(copyText)
+      .then(() => {
+        res = true;
+      })
+      .catch(() => {
+        res = false;
+      });
     console.log(res);
-    debugger
     if(res){
       console.log("bien");
     }else{
